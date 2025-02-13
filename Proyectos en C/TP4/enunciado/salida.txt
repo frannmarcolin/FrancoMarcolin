@@ -1,0 +1,12 @@
+Programa: total
+Sentencia declaración
+Error general '!'
+Sentencia declaración
+Error en asignación por : solo ':'
+Sentencia leer
+Error general '@#!'
+Sentencia declaración
+Error en asignación por = solo '='
+Sentencia asignación
+Sentencia escribir
+fin

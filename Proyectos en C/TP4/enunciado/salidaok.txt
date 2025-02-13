@@ -1,0 +1,10 @@
+Programa: total
+Sentencia declaración
+Sentencia declaración
+Sentencia leer
+Sentencia declaración
+Sentencia asignación
+Sentencia escribir
+Sentencia asignación
+Sentencia escribir
+fin

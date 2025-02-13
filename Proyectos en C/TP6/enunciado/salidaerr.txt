@@ -1,0 +1,20 @@
+#include <stdio.h>
+
+int main(void) {
+	int var1;
+	int var2;
+línea #4: Error léxico: asignación mal formada: :
+	scanf("%d", &var1);
+línea #5: syntax error, unexpected ')', expecting ID
+línea #6: Error léxico: cadena desconocida: @#!
+línea #7: Error semántico: identificador total NO declarado
+línea #8: Error léxico: asignación mal formada: =
+línea #9: Error semántico: identificador var1 ya declarado
+	int var3;
+línea #12: syntax error, unexpected ID, expecting :=
+	printf("%d\n", var1);
+	printf("%d\n", var2);
+línea #13: Error semántico: identificador total NO declarado
+	return 0;
+}
+Errors sintácticos: 5 - Errores léxicos: 3 - Errores Semánticos: 3

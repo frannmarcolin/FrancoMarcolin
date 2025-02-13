@@ -1,0 +1,15 @@
+all: flex bison
+	gcc *.c -Wall -g -lfl -o programa && \
+	./programa < entradaok.txt
+
+flex:
+	flex scanner.l
+
+bison:
+	bison -d parser.y
+
+clean:
+	rm scanner.c 
+	rm scanner.h
+	rm parser.c
+	rm parser.h

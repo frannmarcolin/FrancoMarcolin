@@ -1,0 +1,16 @@
+all: main
+
+main.o: main.c tabla.h conversion.h
+	gcc -c main.c -o main.o
+
+tabla.o: tabla.c tabla.h
+	gcc -c tabla.c -o tabla.o
+
+conversion.o: conversion.c conversion.h
+	gcc -c conversion.c -o conversion.o
+
+main: main.o tabla.o conversion.o
+	gcc main.o tabla.o conversion.o -o main
+
+clean:
+	rm -f *.o main

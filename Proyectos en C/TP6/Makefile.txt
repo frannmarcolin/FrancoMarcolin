@@ -1,0 +1,23 @@
+all: flex bison
+	gcc *.c -Wall -g -lfl -o programa
+
+run: all
+	@for file in ${FILES}; do \
+		./programa < $$file; \
+		if [ $$? -eq 0 ]; then \
+			./programa < $$file > mainok.c; \
+		fi; \
+	done
+
+flex:
+	flex scanner.l
+
+bison:
+	bison -d parser.y
+
+clean:
+	rm scanner.c 
+	rm scanner.h
+	rm parser.c
+	rm parser.h
+	rm mainok.c

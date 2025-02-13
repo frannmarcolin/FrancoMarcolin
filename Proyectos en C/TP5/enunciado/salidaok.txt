@@ -1,0 +1,21 @@
+programa: total
+Sentencia declaración: var1
+Sentencia declaración: var2
+Sentencia leer
+Sentencia declaración: total
+inversión
+multiplicación
+suma
+Sentencia asignación
+Sentencia escribir
+abre paréntesis
+suma
+cierra paréntesis
+multiplicación
+Sentencia asignación
+módulo
+multiplicación
+suma
+Sentencia escribir
+Compilación terminada con éxito
+Errors sintácticos: 0 - Errores léxicos: 0

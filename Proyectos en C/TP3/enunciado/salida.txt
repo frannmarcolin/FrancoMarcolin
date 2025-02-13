@@ -1,0 +1,44 @@
+Token: Programa
+Token: Identificador	lexema: total
+Token: Entero
+Token: Identificador	lexema: var1
+Token: ';'
+Error léxico: cadena desconocida: !
+Token: Entero
+Token: Identificador	lexema: var2
+Token: ';'
+Error léxico: cadena desconocida: :
+Token: Leer
+Token: '('
+Token: Identificador	lexema: var1
+Token: ','
+Token: Identificador	lexema: var2
+Token: ')'
+Token: ';'
+Error léxico: cadena desconocida: @#!
+Token: Entero
+Token: Identificador	lexema: total
+Token: ';'
+Error léxico: constante inválida: 17a5L
+Error léxico: identificador inválido: a5b#2$q!b
+Error léxico: cadena desconocida: =
+Token: Identificador	lexema: total
+Token: Asignación
+Token: Identificador	lexema: var1
+Token: '+'
+Token: Constante	lexema: 10
+Token: '*'
+Token: '-'
+Token: Identificador	lexema: var2
+Token: ';'
+Token: Escribir
+Token: '('
+Token: Identificador	lexema: var1
+Token: ','
+Token: Identificador	lexema: var2
+Token: ','
+Token: Identificador	lexema: total
+Token: ')'
+Token: ';'
+Token: Fin
+Token: Fin de Archivo

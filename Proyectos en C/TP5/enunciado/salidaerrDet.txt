@@ -1,0 +1,13 @@
+programa: total
+Sentencia declaración: var1
+Sentencia declaración: var2
+línea #4: Error léxico: asignación mal formada: :
+línea #5: syntax error, unexpected ')', expecting ID
+línea #6: Error léxico: cadena desconocida: @#!
+línea #8: Error léxico: asignación mal formada: =
+línea #9: syntax error, unexpected '*', expecting ID or CTE or '-' or '('
+Sentencia declaración: var3
+línea #11: syntax error, unexpected ID, expecting :=
+Sentencia escribir
+Errores de compilación
+Errors sintácticos: 3 - Errores léxicos: 3

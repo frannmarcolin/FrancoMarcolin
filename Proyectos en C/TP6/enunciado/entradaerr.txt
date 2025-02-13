@@ -1,0 +1,14 @@
+programa total
+	entero var1;
+	entero var2;
+	:
+	leer (var1, );
+	entero @#!;
+	total; //no declarado
+	=
+	entero var1; //ya declarado
+	total := var1 +  * -var2;
+	entero var3;
+	var3 var2;
+	escribir(var1, var2, total);
+fin
