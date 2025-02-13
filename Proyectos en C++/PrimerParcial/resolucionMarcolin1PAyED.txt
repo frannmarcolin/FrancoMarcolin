@@ -1,0 +1,114 @@
+#include <iostream>
+using namespace std;
+#include <stdio.h>
+#include <string.h>
+
+// 1)
+
+struct Usuario {
+	int id;
+	char nombre[100 + 1];
+};
+
+struct Llamada {
+	int idUsuario;
+	float duracion;
+};
+
+struct UsuarioTotal {
+	int id;
+	char nombre[100 + 1];
+	float totalMinutos;
+	unsigned totalLlamadas;
+	float totalAAbonar;
+};
+
+
+// 2.1)
+
+void agregar(UsuarioTotal arr[], int& len, UsuarioTotal v) {
+	arr[len] = v;
+	len = len + 1;
+}
+
+// 2.2)
+
+int buscar(UsuarioTotal arr[], int len, int idUsuario) {
+	int pos = -1;
+
+	int i = 0;
+	while(pos == -1 && i <= len - 1) {
+		if(arr[i].id == idUsuario) {
+			pos = i;
+		}
+		i = i + 1;
+	}
+
+	return pos;
+}
+
+
+// 3)
+
+void cargarUsuarios(UsuarioTotal arrU[], int& lenU) {
+	FILE* archU = fopen("Usuarios.dat", "rb+");
+
+	Usuario regU;
+	fread(&regU, sizeof(Usuario), 1, archU);
+
+	while(!feof(archU)) {
+		UsuarioTotal elem;
+		elem.id = regU.id;
+		strcpy(elem.nombre, regU.nombre);
+		elem.totalMinutos = 0;
+		elem.totalLlamadas = 0;
+		elem.totalAAbonar = 0;
+
+		agregar(arrU, lenU, elem);
+
+		fread(&regU, sizeof(Usuario), 1, archU);
+	}
+
+	fclose(archU);
+}
+
+
+// 4)
+
+float obtenerPrecio(float minutos) {
+	return 0;
+}
+
+void cargarLlamadas(UsuarioTotal arrU[], int lenU) {
+	FILE* archL = fopen("Llamadas.dat", "rb+");
+
+	Llamada regL;
+	fread(&regL, sizeof(Llamada), 1, archL);
+
+	while(!feof(archL)) {
+		int pos = buscar(arrU, lenU, regL.idUsuario);
+
+		arrU[pos].totalMinutos = arrU[pos].totalMinutos + regL.duracion;
+		arrU[pos].totalLlamadas = arrU[pos].totalLlamadas + 1;
+		arrU[pos].totalAAbonar = arrU[pos].totalAAbonar + obtenerPrecio(regL.duracion);
+
+		fread(&regL, sizeof(Llamada), 1, archL);
+	}
+
+	fclose(archL);
+}
+
+
+// 5)
+
+void mostrarLlamadas(UsuarioTotal arrU[], int lenU) {
+	for(int i = 0; i <= lenU - 1; i++) {
+		if (arrU[i].totalLlamadas > 0) {
+			cout << arrU[i].id << " - " << arrU[i].totalAAbonar << endl;
+		}
+	}
+}
+
+int main() {
+	return 0;
+}

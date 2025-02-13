@@ -1,0 +1,138 @@
+#include <iostream>
+using namespace std;
+#include <stdio.h>
+#include <string.h>
+
+
+struct InfoColaUsuarios {
+	int idUsuario;
+	char nombreUsuario[250 + 1];
+};
+
+struct NodoColaUsuarios {
+	InfoColaUsuarios info;
+	NodoColaUsuarios* sgte;
+};
+
+struct Compra {
+	int idLibro;
+	char nombreLibro[100 + 1];
+	int idusuario;
+};
+
+
+// 1)
+
+struct Libro {
+	int idLibro;
+	char nombreLibro[100 + 1];
+};
+
+struct NodoListaLibros {
+	Libro info;
+	NodoListaLibros* sgte;
+};
+
+struct Usuario {
+	int idUsuario;
+	char nombreUsuario[250 + 1];
+	unsigned cantidadLibrosComprados;
+	NodoListaLibros* raizListaLibros;
+};
+
+struct NodoListaUsuarios {
+	Usuario info;
+	NodoListaUsuarios* sgte;
+};
+
+
+// 2)
+
+void inicializar(NodoListaUsuarios*& raiz) {
+	//no es necesario desarrollar
+}
+
+bool estaVacia(NodoColaUsuarios* raiz) {
+	//no es necesario desarrollar
+	return true;
+}
+
+InfoColaUsuarios desencolar(NodoColaUsuarios*& colaFte, NodoColaUsuarios*& colaFin) {
+	//no es necesario desarrollar
+	InfoColaUsuarios info;
+	return info;
+}
+
+void push(NodoListaUsuarios*& raiz, Usuario info) {
+	//no es necesario desarrollar
+}
+
+void inicializar(NodoListaLibros*& raiz) {
+	//no es necesario desarrollar
+}
+
+NodoListaUsuarios* obtenerListaUsuarios(NodoColaUsuarios*& colaFte, NodoColaUsuarios*& colaFin) {
+	NodoListaUsuarios* raizListaUsuarios;
+	inicializar(raizListaUsuarios); // raizListaUsuarios = NULL;
+
+	while(!estaVacia(colaFte)) { // while(colaFte != NULL) {
+		InfoColaUsuarios infoCola = desencolar(colaFte, colaFin);
+
+		Usuario infoLista;
+		infoLista.idUsuario = infoCola.idUsuario;
+		strcpy(infoLista.nombreUsuario, infoCola.nombreUsuario);
+		infoLista.cantidadLibrosComprados = 0; // inicializo
+		inicializar(infoLista.raizListaLibros); // infoLista.raizListaLibros = NULL;
+		push(raizListaUsuarios, infoLista);
+	}
+
+	return raizListaUsuarios;
+}
+
+// 3)
+
+NodoListaUsuarios* buscar(NodoListaUsuarios* raiz, int idUsuario) {
+	//no es necesario desarrollar
+	return NULL;
+}
+
+void push(NodoListaLibros*& raiz, Libro info) {
+	//no es necesario desarrollar
+}
+
+void cargarCompras(NodoListaUsuarios* raizListaUsuarios) {
+	FILE * arch = fopen("compras.dat", "rb+");
+
+	Compra regC;
+	fread(&regC, sizeof(Compra), 1, arch);
+
+	while(!feof(arch)) {
+		NodoListaUsuarios* ptr = buscar(raizListaUsuarios, regC.idusuario);
+
+		ptr -> info.cantidadLibrosComprados = ptr -> info.cantidadLibrosComprados + 1;
+
+		Libro infoLibro;
+		infoLibro.idLibro = regC.idLibro;
+		strcpy(infoLibro.nombreLibro, regC.nombreLibro);
+
+		push(ptr -> info.raizListaLibros, infoLibro);
+
+		fread(&regC, sizeof(Compra), 1, arch);
+	}
+
+	fclose(arch);
+}
+
+// 4)
+
+void mostrarUsuarios(NodoListaUsuarios* raizListaUsuarios) {
+	NodoListaUsuarios* pAux = raizListaUsuarios;
+	while(pAux != NULL) {
+		cout << pAux -> info.idUsuario << " | " <<  pAux -> info.cantidadLibrosComprados << endl;
+		pAux = pAux -> sgte;
+	}
+}
+
+int main() {
+	return 0;
+}
